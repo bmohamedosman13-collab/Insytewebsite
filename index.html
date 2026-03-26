@@ -596,7 +596,7 @@
   }
 
   .founder-inner {
-    max-width: 700px;
+    max-width: 100%;
     position: relative;
     z-index: 1;
   }
@@ -645,16 +645,19 @@
 
   .founder-bg-text {
     position: absolute;
-    right: -40px;
+    left: 0;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     font-family: 'Cormorant Garamond', serif;
-    font-size: 220px;
+    font-size: clamp(120px, 18vw, 260px);
     font-weight: 600;
-    color: rgba(255,255,255,0.02);
+    color: rgba(255,255,255,0.025);
     line-height: 1;
     pointer-events: none;
     user-select: none;
+    text-align: center;
+    letter-spacing: 0.15em;
   }
 
   /* ── CONTACT ── */
@@ -816,14 +819,14 @@
   <div class="hero-grain"></div>
   <div class="hero-line"></div>
 
-  <div class="hero-eyebrow">Document Intelligence &nbsp;·&nbsp; Privacy First</div>
+  <div class="hero-eyebrow">Privacy &nbsp;·&nbsp; Trust &nbsp;·&nbsp; Intelligence</div>
 
   <h1 class="hero-headline">
-    Making documents<br><em>intelligent,</em><br>not just digital.
+    Do more for the<br><em>people you serve.</em>
   </h1>
 
   <p class="hero-sub">
-    Insyte is a privacy-first NLP platform built for organizations serving vulnerable populations in Alberta. All data stays on Canadian soil.
+    Insyte helps Alberta's health and social service organizations turn documents into decisions — privately, securely, and without leaving the province.
   </p>
 
   <div class="hero-meta">
@@ -867,12 +870,8 @@
         <div class="stat-label">of Canadian nonprofits have a formal AI policy — leaving 64% using AI with no governance framework at all</div>
       </div>
       <div class="stat-box">
-        <div class="stat-number">0</div>
-        <div class="stat-label">Canadian competitors offering HIA-compliant document intelligence</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-number">AB</div>
-        <div class="stat-label">First and only province-specific AI intake platform for sensitive populations</div>
+        <div class="stat-number">Alberta</div>
+        <div class="stat-label">A province with strict data residency requirements where most AI tools remain legally inaccessible to care organizations</div>
       </div>
     </div>
   </div>
@@ -1000,11 +999,11 @@
     </li>
     <li class="traction-item">
       <div class="traction-dot"></div>
-      <div class="traction-text"><strong>Introductory meeting scheduled</strong> with the Alberta Psychological Association. Pilot conversations underway with Bissell Centre and Edmonton community league networks.</div>
+      <div class="traction-text"><strong>Active customer discovery underway</strong> with health and social service organizations across Edmonton — consistently validating both the compliance gap and the administrative burden on frontline staff.</div>
     </li>
     <li class="traction-item">
       <div class="traction-dot"></div>
-      <div class="traction-text"><strong>Lab2Market validation applicant</strong> through the University of Alberta. Applied to Edmonton50 investor showcase program.</div>
+      <div class="traction-text"><strong>Pilot launch targeted for August 2025</strong> with select clinics and community organizations. Conversations with potential pilot partners are ongoing.</div>
     </li>
     <li class="traction-item">
       <div class="traction-dot"></div>
@@ -1012,14 +1011,14 @@
     </li>
     <li class="traction-item">
       <div class="traction-dot"></div>
-      <div class="traction-text"><strong>No equivalent Canadian product exists.</strong> Competitive research across Canada and the US confirmed zero HIA-compliant document intelligence tools serving this market.</div>
+      <div class="traction-text"><strong>A clear gap in the market.</strong> Organizations we speak with consistently report that existing AI tools are either legally off-limits or simply not built for their context.</div>
     </li>
   </ul>
 </section>
 
 <!-- FOUNDER -->
 <section class="section-founder">
-  <div class="founder-bg-text">I</div>
+  <div class="founder-bg-text">INSYTE</div>
   <div class="founder-inner reveal">
     <div class="section-label" style="color: var(--ash);">The Founder</div>
     <blockquote class="founder-quote">
@@ -1041,7 +1040,7 @@
   <p class="contact-body reveal reveal-delay-2">
     We are in active customer discovery and always open to conversations with organizations, researchers, advisors, and investors who care about this problem.
   </p>
-  <a href="/cdn-cgi/l/email-protection#bed6dbd2d2d1fed7d0cdc7cadb90dddf" class="contact-email reveal reveal-delay-3"><span class="__cf_email__" data-cfemail="2b434e4747446b424558525f4e05484a">[email&#160;protected]</span></a>
+  <a href="mailto:insyteinfoedmonton@gmail.com" class="contact-email reveal reveal-delay-3">insyteinfoedmonton@gmail.com</a>
 </section>
 
 <!-- FOOTER -->
@@ -1049,7 +1048,7 @@
   <div class="footer-logo">Insyte</div>
   <div class="footer-right">
     <span>Edmonton, Alberta &nbsp;·&nbsp; Canada</span>
-    <span>Privacy. Intelligence. Trust.</span>
+    <span>Privacy &nbsp;·&nbsp; Trust &nbsp;·&nbsp; Intelligence</span>
   </div>
 </footer>
 
