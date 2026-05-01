@@ -820,12 +820,106 @@
     text-transform: uppercase;
     text-decoration: none;
     cursor: none;
+    outline: none;
+    appearance: none;
     transition: background 0.25s ease, color 0.25s ease;
   }
   .demo-btn:hover {
     background: var(--gold);
     color: var(--plum);
   }
+
+  /* ── PASSWORD MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20,10,35,0.7);
+    z-index: 500;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-overlay.active { display: flex; }
+
+  .modal-box {
+    background: var(--cream);
+    padding: 52px 56px;
+    max-width: 400px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .modal-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    color: var(--ash);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .modal-sub {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--text-soft);
+    margin-bottom: 32px;
+    max-width: 280px;
+  }
+
+  .modal-input {
+    width: 100%;
+    padding: 13px 18px;
+    border: 1px solid var(--cream-dark);
+    background: var(--cream-dark);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 10px;
+    outline: none;
+    text-align: center;
+    letter-spacing: 0.08em;
+    transition: border-color 0.2s ease;
+  }
+  .modal-input:focus { border-color: var(--plum); }
+
+  .modal-error {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: #9b3a3a;
+    margin-bottom: 14px;
+    min-height: 14px;
+    display: none;
+  }
+
+  .modal-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--plum);
+    color: var(--white);
+    border: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.2s ease;
+  }
+  .modal-submit:hover { background: var(--plum-mid); }
 </style>
 </head>
 <body>
@@ -1063,8 +1157,20 @@
     We are in active customer discovery and always open to conversations with organizations, researchers, advisors, and investors who care about this problem.
   </p>
   <a href="mailto:hello@tryinsyte.ca" class="contact-email reveal reveal-delay-3">hello@tryinsyte.ca</a>
-  <a href="https://insyte-production-e64f.up.railway.app" class="demo-btn reveal reveal-delay-4" target="_blank" rel="noopener">Secured Demo</a>
+  <button class="demo-btn reveal reveal-delay-4" onclick="document.getElementById('demoModal').classList.add('active')">Secured Demo</button>
 </section>
+
+<!-- DEMO PASSWORD MODAL -->
+<div class="modal-overlay" id="demoModal">
+  <div class="modal-box">
+    <div class="modal-eyebrow">Restricted Access</div>
+    <div class="modal-title">Access Demo</div>
+    <p class="modal-sub">This demo is shared with authorized prospects. Enter your access code to continue.</p>
+    <input type="password" class="modal-input" id="demoPassword" placeholder="Access code" onkeydown="if(event.key==='Enter')checkDemoPassword()">
+    <div class="modal-error" id="demoError">Incorrect access code. Please try again.</div>
+    <button class="modal-submit" onclick="checkDemoPassword()">Enter</button>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -1120,6 +1226,34 @@
   }, { threshold: 0.15 });
 
   reveals.forEach(el => observer.observe(el));
+
+  // ── DEMO PASSWORD ──
+  const demoModal = document.getElementById('demoModal');
+
+  demoModal.addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  function closeModal() {
+    demoModal.classList.remove('active');
+    document.getElementById('demoPassword').value = '';
+    document.getElementById('demoError').style.display = 'none';
+  }
+
+  function checkDemoPassword() {
+    const val = document.getElementById('demoPassword').value;
+    if (val === 'TryInsyte75') {
+      window.location.href = 'https://insytedemo.pages.dev/org';
+    } else {
+      document.getElementById('demoError').style.display = 'block';
+      document.getElementById('demoPassword').value = '';
+      document.getElementById('demoPassword').focus();
+    }
+  }
 </script>
 </body>
 </html>
